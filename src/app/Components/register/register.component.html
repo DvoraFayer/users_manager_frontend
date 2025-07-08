@@ -1,0 +1,9 @@
+<form (ngSubmit) = "addUser()" #itemForm = "ngForm">
+    <input type="text" [(ngModel)] = "newUser.name" [ngModelOptions]="{standalone: true}">
+    <input type="text" [(ngModel)] = "newUser.email" [ngModelOptions]="{standalone: true}">
+    <input type="text" [(ngModel)] = "newUser.password" [ngModelOptions]="{standalone: true}">
+
+    <button type="submit">Add User</button>
+</form>
+
+<label>{{message}}</label>
