@@ -32,7 +32,7 @@ export class DataService {
       tap(res => {
         console.log(res.token)
         if(res && res.token){
-          this.authToken = res.token)
+          this.authToken = res.token;
         }
       })
     )
