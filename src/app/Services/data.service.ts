@@ -9,12 +9,12 @@ import { catchError, Observable, of, tap } from 'rxjs';
 })
 export class DataService {
   private apiUrl = 'https://docker-tring-3.onrender.com/api/users'; // כתובת ה-API של השרת
-
+  private authToken = '';
+  
   constructor(private http: HttpClient) { }
 
   getItems(): Observable<any[]> {
-    const token = localStorage.getItem('authToken');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.authToken}`);
     return this.http.get<any[]>(this.apiUrl , { headers }).pipe(
       catchError(error =>{
         return of([]);
@@ -32,7 +32,7 @@ export class DataService {
       tap(res => {
         console.log(res.token)
         if(res && res.token){
-          localStorage.setItem('authToken', res.token)
+          this.authToken = res.token)
         }
       })
     )
